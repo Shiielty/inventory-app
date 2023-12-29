@@ -3,13 +3,12 @@ var router = express.Router();
 const asyncHandler = require("express-async-handler")
 
 // Require controllers module
+const index_controller = require("../controllers/indexController")
 const item_controller = require("../controllers/itemController")
 const category_controller = require("../controllers/categoryController")
 
 /* GET home page. */
-router.get('/', asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Site Home Page")
-}));
+router.get('/', index_controller.index);
 
 // GET request for display all Item
 router.get("/items", item_controller.item_list)

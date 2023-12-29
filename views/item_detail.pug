@@ -1,0 +1,21 @@
+extends layout 
+
+block content 
+  h1 #{title}: #{item_detail.name}
+
+  hr
+
+  p= item_detail.description
+  p #[strong Price:] #{item_detail.price}
+  p #[strong In Stocks:] #{item_detail.inStock}
+
+  hr
+
+  p #[strong Category:] 
+    if item_detail.category.length > 0
+      each val, index in item_detail.category 
+        a(href=val.url) #{val.name} 
+        if index < item.genre.length - 1 
+          |,&nbsp;
+    else 
+      p No category
