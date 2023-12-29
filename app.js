@@ -6,14 +6,17 @@ var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+const itemsRouter = require("./routes/items")
+const categoriesRouter = require("./routes/categories")
+
+require('dotenv').config()
 
 var app = express();
 
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB =
-  "mongodb+srv://kazutonine:inventory-app-hehe@cluster0.0povlca.mongodb.net/?retryWrites=true&w=majority";
+const mongoDB = process.env.MONGODB_URL
 
 main().catch((err) => console.log(err));
 async function main() {
@@ -32,6 +35,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/item", itemsRouter);
+app.use("/category", categoriesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
