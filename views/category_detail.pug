@@ -1,0 +1,16 @@
+extends layout 
+
+block content 
+  h1 #{title}: #{category_detail.name}
+
+  p= category_detail.description
+
+  hr 
+
+  if items_category.length 
+    ul 
+      each item in items_category 
+        li #{item.name} ( $#{item.price} )
+  else 
+    p No item in this category
+
