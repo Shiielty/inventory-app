@@ -10,7 +10,14 @@ block content
   if items_category.length 
     ul 
       each item in items_category 
-        li #{item.name} ( $#{item.price} )
+        li 
+          a(href=item.url) #{item.name} ( $#{item.price} )
   else 
     p No item in this category
+
+  hr
+  p 
+    a(href=category_detail.url+'/update') Update Category
+  p  
+    a(href=category_detail.url+'/delete') Delete Category
 

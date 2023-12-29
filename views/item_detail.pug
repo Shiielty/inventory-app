@@ -6,7 +6,7 @@ block content
   hr
 
   p= item_detail.description
-  p #[strong Price:] #{item_detail.price}
+  p #[strong Price:] $#{item_detail.price}
   p #[strong In Stocks:] #{item_detail.inStock}
 
   hr
@@ -15,7 +15,13 @@ block content
     if item_detail.category.length > 0
       each val, index in item_detail.category 
         a(href=val.url) #{val.name} 
-        if index < item.genre.length - 1 
+        if index < item_detail.category.length - 1 
           |,&nbsp;
     else 
       p No category
+  
+  hr
+  p 
+    a(href=item_detail.url+'/update') Update Item
+  p
+    a(href=item_detail.url+'/delete') Delete Item
